@@ -4,14 +4,19 @@
 //variables for position
 float xPos =0;
 float yPos = 0;
+float n = -10;
+float m = +10;
 
-//Booleans for movement
-boolean right = false;
-boolean left = false;
-
+  
 void setup() {
   //window modifications
   size(1000, 800);
+  background(255);
+   
+}
+
+void draw() {
+  //wipe
   background(255);
 
   //initial position
@@ -21,23 +26,23 @@ void setup() {
   //shape properties
   noStroke();
   fill(0, 0, 255);
-}
-
-void draw() {
-  //wipe
-  background(255);
-
-  //update position
-  if (left) {
-    xPos = xPos - 1;
-  }
 
   //draw shape
   ellipse(xPos, yPos, 20, 20);
+
 }
 
 void keyPressed() {
   if (key == 'a') {
-    left = true;
+  xPos = xPos + n;
+  }
+  if (key == 'd') {
+  xPos = xPos + m;
+  }
+  if (key == 'w') {
+  yPos = yPos + n;
+  }
+  if (key == 's') {
+  yPos = yPos + m;
   }
 }
