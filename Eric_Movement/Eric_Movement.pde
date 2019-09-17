@@ -4,44 +4,61 @@
 //variables for position
 float xPos =0;
 float yPos = 0;
-float n = -10;
-float m = +10;
-
 
 void setup() {
   //window modifications
-  size(1000, 800);
+  size(1200, 800);
   background(255);
-  
+
   //initial position
   xPos = width/2;
   yPos = height/2;
 }
 
-
 void draw() {
   //wipe
-  background(255);
+  background(#29582B);
 
   //shape properties
   noStroke();
-  fill(0, 0, 255);
+  fill(#36D7F2);
 
   //draw shape
   ellipse(xPos, yPos, 20, 20);
+
+//makes ball reappear on right side if it moves too far to the left
+if (xPos == -10) {
+  xPos = 1209;
+}
+
+//makes ball reappear on left side if it moves too far to the right
+if (xPos == 1210) {
+  xPos = -9;
+}
+
+//makes ball reappear on bottom if it moves too far up
+if (yPos == -10) {
+  yPos = 809;
+}
+
+//makes ball reappear on tope if it moves too far down
+if (yPos == 810) {
+  yPos = -9;
+}
+
 }
 
 void keyPressed() {
   if (key == 'a') {
-    xPos = xPos + n;
+    xPos = xPos - 1;
   }
   if (key == 'd') {
-    xPos = xPos + m;
+    xPos = xPos + 1;
   }
   if (key == 'w') {
-    yPos = yPos + n;
+    yPos = yPos - 1;
   }
   if (key == 's') {
-    yPos = yPos + m;
+    yPos = yPos + 1;
   }
 }
